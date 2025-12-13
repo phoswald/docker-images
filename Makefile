@@ -24,8 +24,6 @@ push:
 	docker tag philip/builder "$(DOCKER_REGISTRY)/$(DOCKER_USER)/builder"
 	docker push "$(DOCKER_REGISTRY)/$(DOCKER_USER)/jre-25"
 	docker push "$(DOCKER_REGISTRY)/$(DOCKER_USER)/builder"
-	docker rmi "$(DOCKER_REGISTRY)/$(DOCKER_USER)/jre-25"
-	docker rmi "$(DOCKER_REGISTRY)/$(DOCKER_USER)/builder"
 	docker logout "$(DOCKER_REGISTRY)"
 
 clean:
