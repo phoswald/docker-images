@@ -1,0 +1,13 @@
+on: [push, pull_request]
+
+jobs:
+  ci-build:
+    runs-on: docker
+    container:
+      image: alpine:3.23
+    steps:
+      - run: apk add --no-cache nodejs docker-cli make
+      - uses: actions/checkout@v6
+      - run: make clean
+      - run: make all
+      - run: make push DOCKER_REGISTRY="${{ vars.DOCKER_REGISTRY }}" DOCKER_USER="${{ vars.DOCKER_USER }}" DOCKER_TOKEN="${{ secrets.DOCKER_TOKEN }}"
