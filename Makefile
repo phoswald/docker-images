@@ -1,29 +1,29 @@
-TAG=latest
+DOCKER_TAG=latest
 
 all: build test
 
 build: build-jre-25 build-jre-21 build-builder
 
 build-jre-25:
-	docker build -t philip/jre-25:$(TAG) jre-25/
+	docker build -t philip/jre-25:$(DOCKER_TAG) jre-25/
 
 build-jre-21:
-	docker build -t philip/jre-21:$(TAG) jre-21/
+	docker build -t philip/jre-21:$(DOCKER_TAG) jre-21/
 
 build-builder:
-	docker build -t philip/builder:$(TAG) builder/
+	docker build -t philip/builder:$(DOCKER_TAG) builder/
 
 test:
-	docker run --rm philip/jre-25:$(TAG) java -version
-	docker run --rm philip/jre-21:$(TAG) java -version
-	docker run --rm philip/builder:$(TAG) node --version 
-	docker run --rm philip/builder:$(TAG) java -version
-	docker run --rm philip/builder:$(TAG) javac -version
-	docker run --rm philip/builder:$(TAG) mvn -version
-	docker run --rm philip/builder:$(TAG) /usr/lib/jvm/java-21-openjdk/bin/java -version
-	docker run --rm philip/builder:$(TAG) /usr/lib/jvm/java-21-openjdk/bin/javac -version
-	docker run --rm -e JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ philip/builder:$(TAG) mvn -version
-	docker run --rm philip/builder:$(TAG) docker --version
+	docker run --rm philip/jre-25:$(DOCKER_TAG) java -version
+	docker run --rm philip/jre-21:$(DOCKER_TAG) java -version
+	docker run --rm philip/builder:$(DOCKER_TAG) node --version 
+	docker run --rm philip/builder:$(DOCKER_TAG) java -version
+	docker run --rm philip/builder:$(DOCKER_TAG) javac -version
+	docker run --rm philip/builder:$(DOCKER_TAG) mvn -version
+	docker run --rm philip/builder:$(DOCKER_TAG) /usr/lib/jvm/java-21-openjdk/bin/java -version
+	docker run --rm philip/builder:$(DOCKER_TAG) /usr/lib/jvm/java-21-openjdk/bin/javac -version
+	docker run --rm -e JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ philip/builder:$(DOCKER_TAG) mvn -version
+	docker run --rm philip/builder:$(DOCKER_TAG) docker --version
 
 push:
 	docker login "$(DOCKER_REGISTRY)" -u "$(DOCKER_USER)" -p "$(DOCKER_TOKEN)"
@@ -36,6 +36,6 @@ push:
 	docker logout "$(DOCKER_REGISTRY)"
 
 clean:
-	docker rmi -f philip/jre-25:$(TAG)  2> /dev/null || true
-	docker rmi -f philip/jre-21:$(TAG)  2> /dev/null || true
-	docker rmi -f philip/builder:$(TAG) 2> /dev/null || true
+	docker rmi -f philip/jre-25:$(DOCKER_TAG)  2> /dev/null || true
+	docker rmi -f philip/jre-21:$(DOCKER_TAG)  2> /dev/null || true
+	docker rmi -f philip/builder:$(DOCKER_TAG) 2> /dev/null || true
