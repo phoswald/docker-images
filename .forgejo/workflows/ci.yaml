@@ -4,7 +4,7 @@ jobs:
   ci-build:
     runs-on: docker
     container:
-      image: alpine:3.23
+      image: alpine:3.24
     steps:
       - run: apk add --no-cache nodejs docker-cli make
       - uses: actions/checkout@v6

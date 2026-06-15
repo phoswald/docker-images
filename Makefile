@@ -17,13 +17,15 @@ test:
 	docker run --rm philip/jre-25:$(DOCKER_TAG)  java -version
 	docker run --rm philip/jre-21:$(DOCKER_TAG)  java -version
 	docker run --rm philip/builder:$(DOCKER_TAG) node --version 
+	docker run --rm philip/builder:$(DOCKER_TAG) docker --version
 	docker run --rm philip/builder:$(DOCKER_TAG) java -version
 	docker run --rm philip/builder:$(DOCKER_TAG) javac -version
 	docker run --rm philip/builder:$(DOCKER_TAG) mvn -version
 	docker run --rm philip/builder:$(DOCKER_TAG) /usr/lib/jvm/java-21-openjdk/bin/java -version
 	docker run --rm philip/builder:$(DOCKER_TAG) /usr/lib/jvm/java-21-openjdk/bin/javac -version
 	docker run --rm -e JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ philip/builder:$(DOCKER_TAG) mvn -version
-	docker run --rm philip/builder:$(DOCKER_TAG) docker --version
+	docker run --rm philip/builder:$(DOCKER_TAG) clang --version
+	docker run --rm philip/builder:$(DOCKER_TAG) go version
 
 push:
 	docker login $(DOCKER_REGISTRY) -u "$(DOCKER_USER)" -p "$(DOCKER_TOKEN)"
