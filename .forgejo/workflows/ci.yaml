@@ -7,7 +7,7 @@ jobs:
       image: alpine:3.24
     steps:
       - run: apk add --no-cache nodejs docker-cli make
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: |
           GIT_BRANCH="${{ forgejo.ref_name }}"
           if [ "${GIT_BRANCH}" = "master" ]; then
