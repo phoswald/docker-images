@@ -11,8 +11,8 @@ RUN apk upgrade --no-cache
 # For preview packages:
 # $ apk add ... --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
-# Generell
-RUN apk add --no-cache curl make file
+# Generell (package tar installs GNU tar over BusyBox tar, required for cache to work in CI)
+RUN apk add --no-cache tar curl make file
 
 # Für Action Runner: z.B. actions/checkout, actions/cache
 RUN apk add --no-cache nodejs
