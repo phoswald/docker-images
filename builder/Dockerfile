@@ -2,7 +2,7 @@ FROM alpine:3.24
 
 ARG JDK_ARCHIVE="zulu27.28.101-ca-jdk27.0.0-linux_musl_x64"
 
-ARG MAVEN_VERSION="3.9.16"
+ARG MAVEN_VERSION="3.10.1"
 ARG MAVEN_ARCHIVE="apache-maven-${MAVEN_VERSION}"
 
 # Upgrade packages, pulling latest image is not enough!
@@ -37,7 +37,7 @@ RUN apk add --no-cache openjdk25-jdk && \
     ln -sfn "${JDK_ARCHIVE}" /usr/lib/jvm/default-jvm && \
     ln -s . "/usr/lib/jvm/${JDK_ARCHIVE}/jre" && \
     ln -sf /usr/lib/jvm/default-jvm/bin/* /usr/bin/ && \
-    curl "https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_ARCHIVE}-bin.tar.gz" -s | \
+    curl "https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_ARCHIVE}-bin.tar.gz" -s | \
     tar -xz -C /usr/local && \
     ln -s /usr/local/${MAVEN_ARCHIVE}/bin/mvn /usr/local/bin/
 
