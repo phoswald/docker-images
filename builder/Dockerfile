@@ -1,6 +1,6 @@
 FROM alpine:3.24
 
-ARG JDK_ARCHIVE="zulu27.28.101-ca-jdk27.0.0-linux_musl_x64"
+ARG JDK_ARCHIVE="zulu27.30.201-ca-jdk27.0.1.1-linux_musl_x64"
 
 ARG MAVEN_VERSION="3.10.1"
 ARG MAVEN_ARCHIVE="apache-maven-${MAVEN_VERSION}"

@@ -1,6 +1,6 @@
 FROM alpine:3.24
 
-ARG JRE_ARCHIVE="zulu27.28.101-ca-jre27.0.0-linux_musl_x64"
+ARG JRE_ARCHIVE="zulu27.30.201-ca-jre27.0.1.1-linux_musl_x64"
 
 # Upgrade packages, pulling latest image is not enough!
 RUN apk upgrade --no-cache
